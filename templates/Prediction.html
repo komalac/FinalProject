@@ -1,0 +1,74 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+        <form action="/predict" method="get" target="_blank">
+            <div class = "row">
+                <div class="col-md-12">
+                    <div>
+                        Full Name: <input type="text" name="name">                                    
+                    </div>     
+                </div>
+            </div>
+            <br>
+            <div class = "row">
+                <div class ="col-md-6">
+                    Select the Visa Class: 
+                    <select id="visaclass" name="visaclass">                                            
+                            <option value="H1B">H-1B</option>                  
+                            <option value="H1B1C">H-1B1 Chile</option>
+                            <option value= "H1B1S">H-1B1 Singapore</option>
+                            <option value="E3Aus">E-3 Australian</option>
+                    </select>
+                </div>
+                <div class = "col-md-6">
+                    <div>                                    
+                        Yearly Wage:  
+                        <input type="text" name="pwage"> 
+                    </div>
+                </div>
+            </div> <br>  
+            <div class = "row">
+                <div class ="col-md-6">
+                    Select the Emplotement duration: 
+                    <select id="empduration" name="empduration">
+                            <option value="less">Less than 6 months</option>                  
+                            <option value="more">More than 6 months</option>
+                    </select>
+                </div>  
+                <div class="col-md-6">
+                    Full Time Employment?: 
+                    <input type="checkbox" name="ftposition" id="ftposition" value=1>
+                </div>
+            </div> <br> 
+            
+            <div class = "row">
+                <div class="col-md-6">
+                    WillFul Violator?: 
+                    <input type="checkbox" name="wviolator" id="wviolator" value=1>
+                </div>
+                <div class="col-md-6">                                    
+                    Do you have any dependents applying: 
+                    <select id="dependents" name="dependents">
+                            <option value="yes">Yes</option>                  
+                            <option value="no">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <br><br>
+            <div class = "row">
+                <div class="col-md-12">
+                    <button>
+                        <input type="submit" value="Predict!">
+                    </button>
+                </div>  
+            </div>
+        </form>
+
+
+        <div class="row" id="result">
+            <!-- placeholder for the output score -->
+        </div>
+            
+{% endblock %}

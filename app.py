@@ -1,5 +1,9 @@
 from flask import Flask, request, jsonify, render_template
 from sklearn.externals import joblib
+from bs4 import BeautifulSoup
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from splinter import Browser
 
 
 sds = joblib.load("scaler.model")
@@ -23,7 +27,7 @@ def index():
     return render_template('Prediction.html')
 
 
-@app.route('/predict')
+@app.route('/predict', methods = ['GET', 'POST'])
 def predict():
     
     name=request.args.get("name")
@@ -74,13 +78,27 @@ def predict():
     spred = clf.predict(scaled_features)
     spred_prob = clf.predict_proba(scaled_features)
 
-    return jsonify([{
-                    "case_pred": spred.tolist(), 
-                     "case_probs": spred_prob.tolist(),
-                     "features": features,
-                     "scaled_features": scaled_features.tolist()
-                    }])
+    if spred == 1:
+        case_pred = "Approved"
+    else:
+        case_pred = "Denied"
 
+
+    data = {
+        "name": name,
+        "case_pred": case_pred, 
+        "case_probs": spred_prob.tolist(),
+        "features": features,
+        "scaled_features": scaled_features.tolist()
+    }
+
+    # return jsonify([{
+    #                 "case_pred": spred.tolist(), 
+    #                  "case_probs": spred_prob.tolist(),
+    #                  "features": features,
+    #                  "scaled_features": scaled_features.tolist()
+    #                 }])
+    return render_template("result.html", data=data)
 
 if __name__ == "__main__":
-    app.run(debug=True, port = 5006)
+    app.run(debug=True, port = 5005)

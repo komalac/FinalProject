@@ -1,57 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-               <title>Data Visualization</title>
+               <title>H1B Case status prediction</title>
                <meta charset="utf-8">
                <meta name="viewport" content="width=device-width, initial-scale=1">
                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+               <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+               <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-               
+               <style type="text/css">
+                /* .jumbotron{
+                    margin-bottom: 0px;
+                    height: 125px;
+                    background-image: url("{{url_for('static', filename='Images/h1b-visa.jpg')}}");
+                    background-size:cover;
+                    color: rgb(88, 27, 18);  
+                    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+                     vertical-align: text-top; 
+                    text-align: top;                    
+                     font-weight: 200;                     
+                 } */
+                /* .div{
+                    font-size:smaller
+                }
+                .jumbotron h1{
+                        font-weight: 300;
+                        } */ 
+                .bgimg {
+                        background-image: url("{{url_for('static', filename='Images/h1b-visa.jpg')}}");
+                        background-size:cover;
+                        height: 100px;
+                        color: rgb(218, 88, 37);  
+                        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;                        
+                    }
+                </style>
   </head>
 
+  
 <body>
-    <div class="jumbotron text-center" style="margin-bottom:0">
-        <h1>H1B Visa Prediction</h1>                              
-    </div>
+    <!-- <div class = "jumbotron container-fluid text-center" style = "vertical-align: text-top" > -->
+    <div class="bgimg">
+            <h1 style = "text-align: center; font-size: 5em" >H1B Case Status Prediction</h1>
+    </div>    
+    
+    <div class="container">        
+        <div class row>
+            <div class=" col-md-9" >
+            
+                <div class="row">
+                    <div class = "col-md-12">
+                        <h3 style="text-align:center">Data Set and Model</h3><br>                    
+                        
+                            <p style="text-align:justify">The H-1B is an employment-based, non-immigrant visa category for temporary foreign workers in the United States. For a foreign national to apply for H1-B visa, an US employer must offer a job and petition for H-1B visa. The Office of Foreign Labor Certification (OFLC) generates program data that is useful information about the immigration programs including the H1-B visa.</p>
+                        
+                    </div>
+                </div>
+                <div class="row">
+                    <div class = "col-md-4" style="text-align:justify">
+                        <div class = "row">
+                                <h4 style="text-align:center">DataSet</h4>
+                                <p>Analysis was done and model was trained with H1B dataset from <a href="https://www.kaggle.com/kerneler/starter-green-card-h1b-2014-2018-d4553de1-a/">Kaggel</a>
+                        </div>
+                        <div class = "row">
+                                <h4 style="text-align:center">Technology & tools used</h4>
+                                <ul>
+                                    <li>
+                                        <b>Model:</b> Python - pandas, numpy, glob, sklearn (DecisionTreeClassifier, StandardScaler, GridSearchCV, metrics) pickle, imblearn
+                                    </li>                                   
+                                    <li>
+                                        <b>Website:</b> Python, Flask, JS, Jinja
+                                    </li> 
+                                    <li>
+                                        <b>Visualization:</b> Tableau, Python (matplotlib)
+                                    </li> 
+                                </ul>
+                        </div> 
+                        <div class = "row">
+                                <h4 style="text-align:center">Algorithm</h4>
+                                <p><b>Decision Trees</b> are a class of very powerful Machine Learning model cable of achieving high accuracy in many tasks while being highly interpretable. What makes decision trees special in the realm of ML models is really their clarity of information representation. The “knowledge” learned by a decision tree through training is directly formulated into a hierarchical structure. This structure holds and displays the knowledge in such a way that it can easily be understood, even by non-experts.</a>
+                                <p> 
+                                    <a href="{{url_for('static', filename='Images/h1btree.png')}}" alt="DecisionTree" target="_blank"><img src="{{url_for('static', filename='Images/h1btree.png')}}" alt="Tree" style="width:100%;max-width:300px"></a>
+                                </p>
+                        </div>                           
+                    </div>
+                    <div class = "col-md-8" style="text-align:justify">
+                        <h4 style="text-align:center">Visuals - click on any image</h4>
+                        <div class="row">
+                            <div class = "col-md-3" style="text-align:justify">                                        
+                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/Certified employer.png')}}">
+                                <div class="caption text-dark text-center">
+                                    <p>Top employers whose cases got Certified</p>
+                                </div>
+                            </div>  
+                            <div class = "col-md-3" style="text-align:justify">                                        
+                                    <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/Certified job.png')}}">
+                                    <div class="caption text-dark text-center">
+                                        <p>Top employers whose cases got Certified</p>
+                                    </div>
+                            </div>                
+                            <div class = "col-md-3" style="text-align:justify">                                        
+                                    <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/CaseStatus_EmpDays_PWAGE.png')}}">
+                                    <div class="caption text-dark text-center">
+                                        <p>Top employers whose cases got Certified</p>
+                                    </div>
+                            </div>  
+                            <div class = "col-md-3" style="text-align:justify">                                        
+                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/Case_status_year.png')}}">
+                                <div class="caption text-dark text-center">
+                                    <p>Top employers whose cases got Certified</p>
+                                </div>
+                            </div>                                             
+                        </div>
+                                
+                        <div class="row">
+                            <div class = "col-md-3" style="text-align:justify">                                        
+                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/Full_Time_Position_data.png')}}">
+                                <div class="caption text-dark text-center">
+                                    <p>Top employers whose cases got Certified</p>
+                                </div>
+                            </div>  
+                            <div class = "col-md-3" style="text-align:justify">                                        
+                                    <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified"  src="{{url_for('static', filename='Images/H1_dependent_data.png')}}">
+                                    <div class="caption text-dark text-center">
+                                        <p>Top employers whose cases got Certified</p>
+                                    </div>
+                            </div>          
+                            <div class = "col-md-3" style="text-align:justify">                                        
+                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified"  src="{{url_for('static', filename='Images/Visa_class_data.png')}}">
+                                <div class="caption text-dark text-center">
+                                    <p>Top employers whose cases got Certified</p>
+                                </div>
+                            </div>  
+                            <div class = "col-md-3" style="text-align:justify">                                        
+                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified"  src="{{url_for('static', filename='Images/Case_status_year.png')}}">
+                                <div class="caption text-dark text-center">
+                                    <p>Top employers whose cases got Certified</p>
+                                </div>
+                            </div>                                    
+                        </div>
+                        
+                        <!-- The Modal/Lightbox -->
+                        <div id="myModal" class="modal">
+                                <span class="close cursor" onclick="closeModal()">&times;</span>
+                                <div class="modal-content">                            
+                                    <div class="mySlides">
+                                        <div class="numbertext">1 / 8</div>
+                                        <img src="{{url_for('static', filename='Images/Certified employer.png')}}" style="width:75%">
+                                    </div>
+                                
+                                    <div class="mySlides">
+                                        <div class="numbertext">2 / 8</div>
+                                        <img src="{{url_for('static', filename='Images/Certified job.png')}}" style="width:75%">
+                                    </div>
+                                
+                                    <div class="mySlides">
+                                        <div class="numbertext">3 / 8</div>
+                                        <img src="{{url_for('static', filename='Images/CaseStatus_EmpDays_PWAGE.png')}}" style="width:75%">
+                                    </div>
+                                
+                                    <div class="mySlides">
+                                        <div class="numbertext">4 / 8</div>
+                                        <img src="{{url_for('static', filename='Images/Case_status_year.png')}}" style="width:75%">
+                                    </div>
+                                    
+                                    <div class="mySlides">
+                                        <div class="numbertext">5 / 8</div>
+                                        <img src="{{url_for('static', filename='Images/Full_Time_Position_data.png')}}" style="width:75%">
+                                    </div>
+                                
+                                    <div class="mySlides">
+                                        <div class="numbertext">6 / 8</div>
+                                        <img src="{{url_for('static', filename='Images/H1_dependent_data.png')}}" style="width:75%">
+                                    </div>
+                                
+                                    <div class="mySlides">
+                                        <div class="numbertext">7 / 8</div>
+                                        <img src="{{url_for('static', filename='Images/Visa_class_data.png')}}" style="width:75%">
+                                    </div>
+                                
+                                    <div class="mySlides">
+                                        <div class="numbertext">8 / 8</div>
+                                        <img src="{{url_for('static', filename='Images/Case_status_year.png')}}" style="width:75%">
+                                    </div>
+                            
 
-    
-    
-    <div class="container">
-        <ul class="nav nav-tabs">
-            <li class="active">
-                <a data-toggle="tab" href="#home">Home</a>
-            </li>
-            <li>
-                <a data-toggle="tab" href="#menu1">Model</a>
-            </li>
-            <li>
-                <a data-toggle="tab" href="#menu2">Prediction</a>
-            </li>                                             
-        </ul>
-        <div class="tab-content">
-            <div id="home" class="tab-pane fade in active">
-                <h3>HOME</h3>
-                <p>Some text about me Some text about me..Some text about meSome text about me Some text about me Some text about me Some text about me Some text about me</p>
+                            
+                                <!-- Next/previous controls -->
+                                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                            
+                                <!-- Caption text -->
+                                <div class="caption-container">
+                                    <p id="caption"></p>
+                                </div>
+                            
+                                <!-- Thumbnail image controls -->
+                                <div class="column">
+                                    <img class="demo" src="{{url_for('static', filename='Images/Certified employer.png')}}" onclick="currentSlide(1)" alt="Nature">
+                                </div>
+                            
+                                <div class="column">
+                                    <img class="demo" src="{{url_for('static', filename='Images/Certified job.png')}}" onclick="currentSlide(2)" alt="Snow">
+                                </div>
+                            
+                                <div class="column">
+                                    <img class="demo" src="{{url_for('static', filename='Images/CaseStatus_EmpDays_PWAGE.png')}}" onclick="currentSlide(3)" alt="Mountains">
+                                </div>
+                            
+                                <div class="column">
+                                    <img class="demo" src="{{url_for('static', filename='Images/Case_status_year.png')}}" onclick="currentSlide(4)" alt="Lights">
+                                </div>
+
+
+                                <div class="column">
+                                    <img class="demo" src="{{url_for('static', filename='Images/Full_Time_Position_data.png')}}" onclick="currentSlide(5)" alt="Nature">
+                                </div>
+                                
+                                <div class="column">
+                                    <img class="demo" src="{{url_for('static', filename='Images/H1_dependent_data.png')}}" onclick="currentSlide(6)" alt="Snow">
+                                </div>
+                                
+                                <div class="column">
+                                    <img class="demo" src="{{url_for('static', filename='Images/Visa_class_data.png')}}" onclick="currentSlide(7)" alt="Mountains">
+                                </div>
+                                
+                                <div class="column">
+                                    <img class="demo" src="{{url_for('static', filename='Images/Case_status_year.png')}}" onclick="currentSlide(8)" alt="Lights">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class = "col-md-7">
+                                <img src={{url_for('static', filename='Images/model_confusionmatrix.png')}} width="300" height="250">
+                            </div>
+                            <div class = "col-md-5"><br><br>
+                                    <ul>
+                                            <li>
+                                                <b>Model Accuracy</b> is 0.98
+                                            </li>                                   
+                                            <BR>                                                  
+                                            
+                                            <li>
+                                                <b>ROC score</b> is 0.96
+                                            </li> 
+                                        </ul>
+                                    
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
-            <div id="menu1" class="tab-pane fade">
-                <h3>Model</h3>
-                <p>Some text about me Some text about me..Some text about meSome text about me Some text about me Some text about me Some text about me Some text about met.</p>
-            </div>
-            <div id="menu2" class="tab-pane fade">
-                <div>
-                        <h3>Prediction</h3>
+            
+        </div>
+        
+            <div class=" col-md-3">
+                <div class="row">
+                    <br>
+                    <div style="background-color:#E6E6FA; border: 1px solid">
+                        <h3 style="text-align:center">Prediction</h3>
                         <br>
                         <div id ="predict">                     
                             {% block content %}
                             {% endblock %}
                         </div>
+                    </div>    
                 </div>
-
-            </div>        
-        </div>
-
-        <!-- <script src="{{ url_for('static', filename='js/app.js') }}"></script> -->
+                <div class="row">
+                    
+                </div>
+            </div>
+        </div>    
+    </div> 
+        <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
     </body>
 </html>

@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from splinter import Browser
-
+import random
 
 sds = joblib.load("scaler.model")
 clf = joblib.load("H1_status.model")
@@ -98,7 +98,8 @@ def predict():
     #                  "features": features,
     #                  "scaled_features": scaled_features.tolist()
     #                 }])
-    return render_template("result.html", data=data)
+    # iframe = random.choice("result.html")
+    return render_template("Prediction.html", data=data)
 
 if __name__ == "__main__":
-    app.run(debug=True, port = 5005)
+    app.run(debug=True, port = 5003)

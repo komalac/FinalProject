@@ -2,7 +2,6 @@
 
 {% block content %}
 
-
     
         <form action="/predict" method="get" target="result" >
             <span class="border">    
@@ -79,18 +78,30 @@
         </form>
 
         <hr>
+        <hr>
         
-
         <div class="row" id="result">  
             <div class="col-md-12">                      
                 {% if data %}   
                     <div class= "row">
-                        <div class="col-md-12"><h4>Thanks for using the model <b> {{data.name}}</b></h4></div>           
-                    </div>  
-                    
-                    <div class= "row">
-                        <div class="col-md-12"><h4>Your H1 application will be <b>{{data.case_pred}}</b></h4></div>                               
-                    </div>                 
+                        <div class="col-md-12"><h4>Thanks for using the model <b> {{data.name}}</b></h4></div>     
+                        <div class="col-md-12"><h4>With given list of features, below status has been predicted</h4></div>   
+                        {%if data.case_pred == "Denied"%}
+                        <div class="col-md-12" style="text-align:center; color: rgb(107, 13, 13)">
+                            <h2>{{data.case_pred}}</h2></div>
+                        {%endif%}
+                        {%if data.case_pred == "Approved"%}
+                        <div class="col-md-12" style="text-align:center; color: rgb(1, 58, 3)">
+                                <h2>{{data.case_pred}}</h2></div>
+                        {%endif%}
+                        <div class="col-md-12">
+                            <p>
+                                </b>Prediction probablity [Approved, Denied]: </b> &nbsp;{{data.case_probs}}
+                            </p>
+                        </div>        
+                    </div> 
+                                        
+                                    
                {%endif %}
             </div>  
         </div>

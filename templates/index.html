@@ -9,48 +9,31 @@
                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-               <style type="text/css">
-                /* .jumbotron{
-                    margin-bottom: 0px;
-                    height: 125px;
-                    background-image: url("{{url_for('static', filename='Images/h1b-visa.jpg')}}");
-                    background-size:cover;
-                    color: rgb(88, 27, 18);  
-                    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-                     vertical-align: text-top; 
-                    text-align: top;                    
-                     font-weight: 200;                     
-                 } */
-                /* .div{
-                    font-size:smaller
-                }
-                .jumbotron h1{
-                        font-weight: 300;
-                        } */ 
+               <script src="http://code.jquery.com/jquery-latest.js"></script>
+               <style type="text/css">               
                 .bgimg {
                         background-image: url("{{url_for('static', filename='Images/h1b-visa.jpg')}}");
                         background-size:cover;
                         height: 100px;
-                        color: rgb(218, 88, 37);  
-                        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;                        
+                        color: rgb(49, 47, 46);  
+                        text-shadow: 2px 0 white, 0 1px white, 1px 0 white, 0 -1px white;                        
                     }
                 </style>
   </head>
 
   
-<body>
-    <!-- <div class = "jumbotron container-fluid text-center" style = "vertical-align: text-top" > -->
+<body>    
     <div class="bgimg">
-            <h1 style = "text-align: center; font-size: 5em" >H1B Case Status Prediction</h1>
+            <h1 style = "text-align: center; font-size: 6em" >H1B Case Status Prediction</h1>
     </div>    
     
     <div class="container">        
-        <div class row>
+        <div class = row>
             <div class=" col-md-9" >
             
                 <div class="row">
                     <div class = "col-md-12">
-                        <h3 style="text-align:center">Data Set and Model</h3><br>                    
+                        <h3 style="text-align:center; color: rgb(107, 13, 13)">Data Set and Model</h3>      
                         
                             <p style="text-align:justify">The H-1B is an employment-based, non-immigrant visa category for temporary foreign workers in the United States. For a foreign national to apply for H1-B visa, an US employer must offer a job and petition for H-1B visa. The Office of Foreign Labor Certification (OFLC) generates program data that is useful information about the immigration programs including the H1-B visa.</p>
                         
@@ -59,11 +42,11 @@
                 <div class="row">
                     <div class = "col-md-4" style="text-align:justify">
                         <div class = "row">
-                                <h4 style="text-align:center">DataSet</h4>
+                                <h4 style="text-align:center; color: rgb(4, 0, 59)">DataSet</h4>
                                 <p>Analysis was done and model was trained with H1B dataset from <a href="https://www.kaggle.com/kerneler/starter-green-card-h1b-2014-2018-d4553de1-a/">Kaggel</a>
                         </div>
                         <div class = "row">
-                                <h4 style="text-align:center">Technology & tools used</h4>
+                                <h4 style="text-align:center; color: rgb(4, 0, 59)">Technology & tools used</h4>
                                 <ul>
                                     <li>
                                         <b>Model:</b> Python - pandas, numpy, glob, sklearn (DecisionTreeClassifier, StandardScaler, GridSearchCV, metrics) pickle, imblearn
@@ -76,66 +59,60 @@
                                     </li> 
                                 </ul>
                         </div> 
-                        <div class = "row">
-                                <h4 style="text-align:center">Algorithm</h4>
-                                <p><b>Decision Trees</b> are a class of very powerful Machine Learning model cable of achieving high accuracy in many tasks while being highly interpretable. What makes decision trees special in the realm of ML models is really their clarity of information representation. The “knowledge” learned by a decision tree through training is directly formulated into a hierarchical structure. This structure holds and displays the knowledge in such a way that it can easily be understood, even by non-experts.</a>
-                                <p> 
-                                    <a href="{{url_for('static', filename='Images/h1btree.png')}}" alt="DecisionTree" target="_blank"><img src="{{url_for('static', filename='Images/h1btree.png')}}" alt="Tree" style="width:100%;max-width:300px"></a>
-                                </p>
-                        </div>                           
+              
                     </div>
                     <div class = "col-md-8" style="text-align:justify">
-                        <h4 style="text-align:center">Visuals - click on any image</h4>
+                        <h4 style="text-align:center; color: rgb(4, 0, 59)">Data Visuals - click on any image</h4>
                         <div class="row">
                             <div class = "col-md-3" style="text-align:justify">                                        
                                 <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/Certified employer.png')}}">
                                 <div class="caption text-dark text-center">
-                                    <p>Top employers whose cases got Certified</p>
+                                    <p>Employers Vs Certified cases</p>
                                 </div>
                             </div>  
                             <div class = "col-md-3" style="text-align:justify">                                        
                                     <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/Certified job.png')}}">
                                     <div class="caption text-dark text-center">
-                                        <p>Top employers whose cases got Certified</p>
+                                        <p>Certified Job roles</p>
                                     </div>
                             </div>                
                             <div class = "col-md-3" style="text-align:justify">                                        
                                     <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/CaseStatus_EmpDays_PWAGE.png')}}">
                                     <div class="caption text-dark text-center">
-                                        <p>Top employers whose cases got Certified</p>
+                                        <p>Avg WAGE & Employment days</p>
                                     </div>
                             </div>  
                             <div class = "col-md-3" style="text-align:justify">                                        
                                 <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/Case_status_year.png')}}">
                                 <div class="caption text-dark text-center">
-                                    <p>Top employers whose cases got Certified</p>
+                                    <p>Case status each year</p>
                                 </div>
                             </div>                                             
                         </div>
                                 
                         <div class="row">
                             <div class = "col-md-3" style="text-align:justify">                                        
-                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/Full_Time_Position_data.png')}}">
+                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified" src="{{url_for('static', filename='Images/top worksite state.png')}}">
                                 <div class="caption text-dark text-center">
-                                    <p>Top employers whose cases got Certified</p>
+                                    <p>Worksite state Vs #cases filed</p>
                                 </div>
                             </div>  
                             <div class = "col-md-3" style="text-align:justify">                                        
                                     <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified"  src="{{url_for('static', filename='Images/H1_dependent_data.png')}}">
                                     <div class="caption text-dark text-center">
-                                        <p>Top employers whose cases got Certified</p>
+                                        <p>H1 Dependent cases</p>
                                     </div>
                             </div>          
                             <div class = "col-md-3" style="text-align:justify">                                        
-                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified"  src="{{url_for('static', filename='Images/Visa_class_data.png')}}">
+                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified"  src="{{url_for('static', filename='Images/top_sponsoring_states.png')}}">
                                 <div class="caption text-dark text-center">
-                                    <p>Top employers whose cases got Certified</p>
+                                    <p>Employer state Vs #cases filed</p>
                                 </div>
                             </div>  
                             <div class = "col-md-3" style="text-align:justify">                                        
-                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified"  src="{{url_for('static', filename='Images/Case_status_year.png')}}">
+                                <img class="img-thumbnail hover-shadow" onclick="openModal();currentSlide(2)" alt="Top employers whose cases got Certified"  src="{{url_for('static', filename='Images/Case_status_data.png')}}">
                                 <div class="caption text-dark text-center">
-                                    <p>Top employers whose cases got Certified</p>
+                                    <p># of Certified & Denied</p>
                                 </div>
                             </div>                                    
                         </div>
@@ -166,7 +143,7 @@
                                     
                                     <div class="mySlides">
                                         <div class="numbertext">5 / 8</div>
-                                        <img src="{{url_for('static', filename='Images/Full_Time_Position_data.png')}}" style="width:75%">
+                                        <img src="{{url_for('static', filename='Images/top worksite state.png')}}" style="width:75%">
                                     </div>
                                 
                                     <div class="mySlides">
@@ -176,12 +153,12 @@
                                 
                                     <div class="mySlides">
                                         <div class="numbertext">7 / 8</div>
-                                        <img src="{{url_for('static', filename='Images/Visa_class_data.png')}}" style="width:75%">
+                                        <img src="{{url_for('static', filename='Images/top_sponsoring_states.png')}}" style="width:75%">
                                     </div>
                                 
                                     <div class="mySlides">
                                         <div class="numbertext">8 / 8</div>
-                                        <img src="{{url_for('static', filename='Images/Case_status_year.png')}}" style="width:75%">
+                                        <img src="{{url_for('static', filename='Images/Case_status_data.png')}}" style="width:75%">
                                     </div>
                             
 
@@ -197,11 +174,11 @@
                             
                                 <!-- Thumbnail image controls -->
                                 <div class="column">
-                                    <img class="demo" src="{{url_for('static', filename='Images/Certified employer.png')}}" onclick="currentSlide(1)" alt="Nature">
+                                    <img class="demo" src="{{url_for('static', filename='Images/Certified employer.png')}}" onclick="currentSlide(1)" alt="Top Certified Employer">
                                 </div>
                             
                                 <div class="column">
-                                    <img class="demo" src="{{url_for('static', filename='Images/Certified job.png')}}" onclick="currentSlide(2)" alt="Snow">
+                                    <img class="demo" src="{{url_for('static', filename='Images/Certified job.png')}}" onclick="currentSlide(2)" alt="Top Certified Jobs">
                                 </div>
                             
                                 <div class="column">
@@ -214,65 +191,80 @@
 
 
                                 <div class="column">
-                                    <img class="demo" src="{{url_for('static', filename='Images/Full_Time_Position_data.png')}}" onclick="currentSlide(5)" alt="Nature">
+                                    <img class="demo" src="{{url_for('static', filename='Images/top worksite state.png')}}" onclick="currentSlide(5)" alt="Worksite state">
                                 </div>
                                 
                                 <div class="column">
-                                    <img class="demo" src="{{url_for('static', filename='Images/H1_dependent_data.png')}}" onclick="currentSlide(6)" alt="Snow">
+                                    <img class="demo" src="{{url_for('static', filename='Images/H1_dependent_data.png')}}" onclick="currentSlide(6)" alt="Dependent visas">
                                 </div>
                                 
                                 <div class="column">
-                                    <img class="demo" src="{{url_for('static', filename='Images/Visa_class_data.png')}}" onclick="currentSlide(7)" alt="Mountains">
+                                    <img class="demo" src="{{url_for('static', filename='Images/top_sponsoring_states.png')}}" onclick="currentSlide(7)" alt="Visa sponsoring states">
                                 </div>
                                 
                                 <div class="column">
-                                    <img class="demo" src="{{url_for('static', filename='Images/Case_status_year.png')}}" onclick="currentSlide(8)" alt="Lights">
+                                    <img class="demo" src="{{url_for('static', filename='Images/Case_status_data.png')}}" onclick="currentSlide(8)" alt="Case status data">
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class = "col-md-7">
-                                <img src={{url_for('static', filename='Images/model_confusionmatrix.png')}} width="300" height="250">
-                            </div>
-                            <div class = "col-md-5"><br><br>
-                                    <ul>
-                                            <li>
-                                                <b>Model Accuracy</b> is 0.98
-                                            </li>                                   
-                                            <BR>                                                  
-                                            
-                                            <li>
-                                                <b>ROC score</b> is 0.96
-                                            </li> 
-                                        </ul>
-                                    
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
+                <div class = "row">
+                    <div class= "col-md-8">
+                        <h4 style="text-align:center; color: rgb(4, 0, 59)">Algorithm</h4>
+                        <p><b>Decision Trees</b> are a class of very powerful Machine Learning model cable of achieving high accuracy in many tasks while being highly interpretable. What makes decision trees special in the realm of ML models is really their clarity of information representation. The “knowledge” learned by a decision tree through training is directly formulated into a hierarchical structure. This structure holds and displays the knowledge in such a way that it can easily be understood, even by non-experts.</a></p>
+                    </div>
+                    
+                    <div class = "col-md-4"><br><br>
+                            <ul>
+                                    <li>
+                                        <b>Model Accuracy</b> is 0.98
+                                    </li>                                   
+                                    <BR>                                                  
+                                    
+                                    <li>
+                                        <b>ROC score</b> is 0.96
+                                    </li> 
+                                </ul>
+                            
+                    </div>
+                </div>
+                <div class = row>
+                        <div class="col-md-6">
+                            <p style = "text-align: center; font-size: 1em"><b>Click below image for model's 'DecisionTree'</b></p>
+                            <p> 
+                                <a href="{{url_for('static', filename='Images/h1btree.png')}}" alt="DecisionTree" target="_blank"><img src="{{url_for('static', filename='Images/h1btree.png')}}" alt="Tree" style="width:500px"></a>
+                            </p>            
+                        </div>
+                        <div class="col-md-1">
+                            &nbsp;
+                        </div>
+                        <div class="col-md-3">
+                                <p style = "text-align: center; font-size: 1em"><b>Model's 'Confusion Matrix'</b></p>
+                                <p> 
+                                        <img src="{{url_for('static', filename='Images/model_confusionmatrix.png')}}" width="350" height="300">
+                                </p>
+                            </div>
+                    </div>
             </div>
-            
-        </div>
-        
+           
             <div class=" col-md-3">
                 <div class="row">
                     <br>
                     <div style="background-color:#E6E6FA; border: 1px solid">
-                        <h3 style="text-align:center">Prediction</h3>
-                        <br>
+                        <h3 style="text-align:center">Predict a case status</h3>
+                        <br><br>
                         <div id ="predict">                     
                             {% block content %}
                             {% endblock %}
                         </div>
                     </div>    
-                </div>
-                <div class="row">
-                    
-                </div>
+                </div> 
             </div>
+        
         </div>    
+        
     </div> 
         <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 

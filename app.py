@@ -92,14 +92,8 @@ def predict():
         "scaled_features": scaled_features.tolist()
     }
 
-    # return jsonify([{
-    #                 "case_pred": spred.tolist(), 
-    #                  "case_probs": spred_prob.tolist(),
-    #                  "features": features,
-    #                  "scaled_features": scaled_features.tolist()
-    #                 }])
-    # iframe = random.choice("result.html")
+    
     return render_template("Prediction.html", data=data)
 
 if __name__ == "__main__":
-    app.run(debug=True, port = 5003)
+    app.run(debug=True, port = 5002)

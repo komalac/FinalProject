@@ -14,17 +14,21 @@
                 .bgimg {
                         background-image: url("{{url_for('static', filename='Images/h1b-visa.jpg')}}");
                         background-size:cover;
-                        height: 100px;
-                        color: rgb(49, 47, 46);  
-                        text-shadow: 2px 0 white, 0 1px white, 1px 0 white, 0 -1px white;                        
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        /* background-attachment: fixed ; */
+                        height: 150px;
+                        color: rgb(10, 2, 39);  
+                        /* text-shadow: 1px 0 white, 0 0px white, 0px 0 white, 0 -1px white;                         */
                     }
                 </style>
   </head>
 
   
-<body>    
+<body>
     <div class="bgimg">
-            <h1 style = "text-align: center; font-size: 6em" >H1B Case Status Prediction</h1>
+            <br>
+            <h1 style = "text-align: center; font-size: 4em" >H1B Case Status Prediction</h1>
     </div>    
     
     <div class="container">        
@@ -52,8 +56,8 @@
                                         <b>Model:</b> Python - pandas, numpy, glob, sklearn (DecisionTreeClassifier, StandardScaler, GridSearchCV, metrics) pickle, imblearn
                                     </li>                                   
                                     <li>
-                                        <b>Website:</b> Python, Flask, JS, Jinja
-                                    </li> 
+                                        <b>Website:</b> Python, Flask, JS, Jinja, HTML, CSS, bootstrap
+                                    </li>                                     
                                     <li>
                                         <b>Visualization:</b> Tableau, Python (matplotlib)
                                     </li> 
